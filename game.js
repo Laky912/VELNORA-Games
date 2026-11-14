@@ -53,7 +53,20 @@ function tileAt(x,y){return tiles[y*W+x]}
 function iso(x,y){return{x:originX+(x-y)*tileW/2,y:originY+(x+y)*tileH/2}}
 function poly(points,fill,stroke){ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));ctx.closePath();ctx.fillStyle=fill;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=1;ctx.stroke()}}
 function diamond(x,y,fill,stroke){poly([{x,y:y-tileH/2},{x:x+tileW/2,y},{x,y:y+tileH/2},{x:x-tileW/2,y}],fill,stroke)}
-function drawRock(p,type,scale=1){const c={stone:["#62737c","#8b9aa0","#3c505b"],coal:["#39434b","#87939a","#242d35"],copper:["#995c3e","#e4a16d","#633b30"],iron:["#788b96","#c4d1d7","#4c5c68"],gold:["#9c7938","#f5d47a","#5d4829"],crystal:["#477f8e","#a2f1ef","#28505f"]}[type]||["#62737c","#8b9aa0","#3c505b"];ctx.save();ctx.translate(p.x,p.y-3);ctx.scale(scale,scale);poly([{x:-tileW*.23,y:0},{x:-tileW*.16,y:-13},{x:-2,y:-21},{x:tileW*.18,y:-14},{x:tileW*.23,y:0},{x:0,y:8}],c[0],"#23343d");poly([{x:-tileW*.16,y:-13},{x:-2,y:-21},{x:tileW*.18,y:-14},{x:tileW*.05,y:-7}],c[1]);poly([{x:-tileW*.23,y:0},{x:0,y:8},{x:tileW*.23,y:0},{x:tileW*.18,y:-14},{x:0,y:-5}],c[2]);if(type!=="stone"){ctx.fillStyle=c[1];ctx.beginPath();ctx.arc(-4,-9,3.5,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.arc(7,-3,2,0,Math.PI*2);ctx.fill()}ctx.restore()}
+function drawRock(p,type,scale=1){
+const palettes={stone:["#596b70","#aab4b4","#34474c"],coal:["#27333a","#879397","#111d24"],copper:["#8c4d35","#f2b27b","#512d25"],iron:["#687d88","#dce5e6","#3d515b"],gold:["#a07830","#ffe79a","#5c421e"],crystal:["#287789","#c2ffff","#123d50"]};
+const c=palettes[type]||palettes.stone;
+ctx.save();ctx.translate(p.x,p.y-5);ctx.scale(scale,scale);
+ctx.fillStyle="#10191b88";ctx.beginPath();ctx.ellipse(0,5,18,7,0,0,Math.PI*2);ctx.fill();
+poly([{x:-18,y:0},{x:-15,y:-10},{x:-8,y:-17},{x:-3,y:-24},{x:7,y:-21},{x:15,y:-13},{x:18,y:-3},{x:13,y:5},{x:1,y:9},{x:-11,y:7}],c[0],"#202d32");
+poly([{x:-15,y:-10},{x:-8,y:-17},{x:-3,y:-24},{x:7,y:-21},{x:2,y:-10},{x:-7,y:-5}],c[1]);
+poly([{x:2,y:-10},{x:7,y:-21},{x:15,y:-13},{x:18,y:-3},{x:13,y:5},{x:1,y:9},{x:-1,y:-2}],c[2]);
+poly([{x:-15,y:-10},{x:-7,y:-5},{x:-11,y:7},{x:-18,y:0}],type==="stone"?"#46585d":c[0]);
+if(type==="coal"){ctx.fillStyle="#aab6b8";ctx.globalAlpha=.72;for(const q of [[-8,-11,2.5],[3,-7,3.5],[8,0,2],[-2,2,2]]){ctx.beginPath();ctx.arc(q[0],q[1],q[2],0,Math.PI*2);ctx.fill()}}
+else if(type==="crystal"){poly([{x:-10,y:1},{x:-8,y:-14},{x:-3,y:-29},{x:1,y:-10}],"#65cbd1","#d6ffff");poly([{x:-1,y:4},{x:3,y:-17},{x:9,y:-25},{x:11,y:0}],"#2d8799","#aafaff");poly([{x:4,y:2},{x:12,y:-11},{x:17,y:-15},{x:15,y:3}],"#1b5c72","#8be9ef")}
+else if(type!=="stone"){ctx.strokeStyle=type==="gold"?"#fff0b0":type==="copper"?"#ffd0a3":"#edf6f8";ctx.lineWidth=2;ctx.globalAlpha=.9;ctx.beginPath();ctx.moveTo(-9,-9);ctx.lineTo(-4,-16);ctx.moveTo(2,-3);ctx.lineTo(8,-11);ctx.stroke();ctx.fillStyle=c[1];ctx.beginPath();ctx.arc(-5,-5,2.7,0,Math.PI*2);ctx.arc(8,-1,2,0,Math.PI*2);ctx.fill()}
+ctx.restore();
+}
 function draw(){const r=canvas.getBoundingClientRect();ctx.clearRect(0,0,r.width,r.height);if(mineScene.complete&&mineScene.naturalWidth){ctx.drawImage(mineScene,0,0,r.width,r.height)}else{const bg=ctx.createLinearGradient(0,0,0,r.height);bg.addColorStop(0,"#8a7048");bg.addColorStop(1,"#293b3e");ctx.fillStyle=bg;ctx.fillRect(0,0,r.width,r.height)}
 // Ore deposits are placed as natural outcrops over the illustrated cave floor, not as a solid block grid.
 for(let sum=0;sum<W+H-1;sum++)for(let y=0;y<H;y++){const x=sum-y;if(x<0||x>=W)continue;const t=tileAt(x,y),p=iso(x,y);if(t.removed||t.type==="empty"||t.type==="wall")continue;ctx.save();ctx.translate(p.x,p.y+((x+y)%2)*2);if(t.type==="stone"){drawRock(p,t.type,.68)}else{drawRock(p,t.type,.86);if(t.type==="gold"||t.type==="crystal"){ctx.globalAlpha=.25;ctx.fillStyle=t.type==="gold"?"#ffe18a":"#8ffaff";ctx.beginPath();ctx.ellipse(0,0,17,8,0,0,Math.PI*2);ctx.fill()}}ctx.restore();if(selected&&selected.x===x&&selected.y===y){ctx.strokeStyle="#fff0b4";ctx.lineWidth=2;diamond(p.x,p.y,"#ffffff10","#ffe09a")}}
