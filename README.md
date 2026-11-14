@@ -8,7 +8,7 @@ MINING EMPIRE es un juego de minería, exploración y gestión empresarial para 
 
 ## Sistemas incluidos
 
-- Mina isométrica interactiva con cinco tipos de recursos: carbón, cobre, hierro, oro y cristal.
+- Escenario ilustrado isométrico de la Mina abandonada, con plataformas de madera, túneles, raíles, vagoneta, elevador, vetas y cristales; depósitos interactivos de carbón, cobre, hierro, oro y cristal.
 - Movimiento con WASD o flechas, controles reasignables y botones táctiles en pantallas pequeñas.
 - Minería manual, resistencia de los bloques, energía y experiencia del operario.
 - Progresión de niveles, mejoras de pico y ampliaciones de almacén.
@@ -43,6 +43,7 @@ No hay un proceso de compilación. Los archivos del juego son HTML, CSS y JavaSc
 - `index.html`: interfaz, HUD, diálogos y controles.
 - `style.css`: diseño visual adaptable.
 - `game.js`: mundo, economía, campaña, regiones, automatización y guardado.
+- `assets/mine-abandoned.svg`: escenario ilustrado original de la primera región.
 
 ## Guardado
 
