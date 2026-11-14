@@ -1,53 +1,55 @@
 # VELNORA-Games
 
-Official game development repository of **VELNORA Studios**.
+Repositorio oficial de desarrollo de **VELNORA Studios**.
 
-## Current project: MINING EMPIRE
+# MINING EMPIRE — Edición de lanzamiento 1.0.0
 
-A browser-based 2D isometric mining and management game. The visual direction uses 2D artwork with a faux-3D isometric perspective.
+MINING EMPIRE es un juego de minería, exploración y gestión empresarial para navegador. Su mundo utiliza gráficos 2D dibujados en Canvas con perspectiva isométrica simulada. No necesita instalación, frameworks ni servicios externos para jugar.
 
-### Current prototype — v0.2.0
+## Sistemas incluidos
 
-Built with plain HTML, CSS and JavaScript. No build tools or installation are required.
+- Mina isométrica interactiva con cinco tipos de recursos: carbón, cobre, hierro, oro y cristal.
+- Movimiento con WASD o flechas, controles reasignables y botones táctiles en pantallas pequeñas.
+- Minería manual, resistencia de los bloques, energía y experiencia del operario.
+- Progresión de niveles, mejoras de pico y ampliaciones de almacén.
+- Economía con precios distintos por mineral y venta del inventario.
+- Seis regiones desbloqueables: Mina abandonada, Galerías profundas, Caverna cristalina, Cuenca volcánica, Abismo congelado y Núcleo antiguo.
+- Campaña principal de ocho objetivos con recompensas y una conclusión narrativa al descubrir el núcleo.
+- Automatización con taladros, generadores y trabajadores contratados.
+- Logros, estadísticas de por vida y guardado local automático.
+- Interfaz adaptable a escritorio y móvil.
 
-- `index.html` — game interface, settings and development panels
-- `style.css` — visual design and responsive layout
-- `game.js` — mine rendering, movement, mining, upgrades, construction and save system
+## Jugar
 
-### Implemented features
+1. Abre `index.html` en un navegador moderno.
+2. También puedes habilitar GitHub Pages desde **Settings → Pages**.
+3. Selecciona **Deploy from a branch**, rama `main`, carpeta `/(root)` y guarda.
 
-- Isometric mine rendered on an HTML Canvas
-- WASD and arrow-key movement
-- Remappable movement keys in Settings
-- Click nearby blocks to mine
-- Coal, copper and iron resources
-- Energy that gradually regenerates
-- Inventory capacity and sellable resources
-- Pickaxe upgrades that increase mining damage
-- Warehouse upgrades that expand inventory capacity
-- Build menu with a purchasable automatic drill
-- Automatic drill that mines a nearby block every 12 seconds
-- Mission progress display
-- Persistent mine layout and resources in the current browser
+No hay un proceso de compilación. Los archivos del juego son HTML, CSS y JavaScript estándar.
 
-### Run it
+## Controles
 
-Open `index.html` in a modern browser, or enable GitHub Pages:
+| Acción | Teclado |
+|---|---|
+| Moverse | WASD o flechas |
+| Excavar | Clic o toque sobre un bloque cercano |
+| Interactuar / expediciones | E |
+| Abrir inventario | I |
+| Cerrar panel | Escape |
+| Movimiento móvil | Controles en pantalla |
 
-1. Open the repository Settings.
-2. Select **Pages**.
-3. Under **Build and deployment**, choose **Deploy from a branch**.
-4. Select branch `main` and folder `/ (root)`.
-5. Save and wait for GitHub Pages to publish.
+## Archivos
 
-### Development roadmap
+- `index.html`: interfaz, HUD, diálogos y controles.
+- `style.css`: diseño visual adaptable.
+- `game.js`: mundo, economía, campaña, regiones, automatización y guardado.
 
-1. Improve the mining world, player animation and visual effects.
-2. Add more machines, production chains and workers.
-3. Add deeper mine levels and new mineral types.
-4. Build the campaign, regions, secrets and story progression.
-5. Add mobile touch controls, audio, accessibility and polish.
+## Guardado
 
-## Studio
+El progreso se guarda en el almacenamiento local del navegador. Para conservarlo, usa el mismo navegador y no borres los datos del sitio. El botón de guardado permite guardar manualmente. La opción de reiniciar partida elimina el progreso local de MINING EMPIRE.
 
-**VELNORA Studios** — original games for the browser.
+## Nota de desarrollo
+
+Esta versión consolida el ciclo principal de juego y la campaña inicial. La publicación de GitHub Pages debe activarse desde la configuración del repositorio; subir los archivos no activa Pages automáticamente.
+
+**VELNORA Studios** — mundos que merecen ser explorados.
