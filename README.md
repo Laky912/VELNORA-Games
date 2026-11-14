@@ -11,7 +11,9 @@ MINING EMPIRE es un juego de minería, exploración y gestión empresarial para 
 - Segunda pasada visual: vetas minerales con siluetas más naturales, minero con equipo y pico mejor definidos, iluminación ambiental y tonos de atmósfera distintos según la región.
 
 - Escenario ilustrado isométrico de la Mina abandonada, con plataformas de madera, túneles, raíles, vagoneta, elevador, vetas y cristales; depósitos interactivos de carbón, cobre, hierro, oro y cristal.
-- Movimiento con WASD o flechas, controles reasignables y botones táctiles en pantallas pequeñas.
+- Movimiento isométrico intuitivo con WASD o flechas, controles reasignables y botones táctiles en pantallas pequeñas.
+- Al seleccionar un mineral lejano, el minero encuentra una ruta libre, se acerca automáticamente y comienza a excavar al llegar.
+- Personaje de minero redibujado con casco iluminado, uniforme, pico y animación de pasos.
 - Minería manual, resistencia de los bloques, energía y experiencia del operario.
 - Progresión de niveles, mejoras de pico y ampliaciones de almacén.
 - Economía con precios distintos por mineral y venta del inventario.
@@ -34,7 +36,7 @@ No hay un proceso de compilación. Los archivos del juego son HTML, CSS y JavaSc
 | Acción | Teclado |
 |---|---|
 | Moverse | WASD o flechas |
-| Excavar | Clic o toque sobre un bloque cercano |
+| Excavar | Clic o toque sobre un mineral; el minero se acerca automáticamente |
 | Interactuar / expediciones | E |
 | Abrir inventario | I |
 | Cerrar panel | Escape |
