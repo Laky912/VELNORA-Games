@@ -6,15 +6,15 @@ Official game development repository of **VELNORA Studios**.
 
 A browser-based 2D isometric mining and management game. The visual direction uses 2D artwork with a faux-3D isometric perspective.
 
-### Play the prototype locally or through GitHub Pages
+### Current prototype — v0.2.0
 
-The game is built with plain HTML, CSS and JavaScript. No build tools or installation are required.
+Built with plain HTML, CSS and JavaScript. No build tools or installation are required.
 
-- `index.html` — game interface and layout
+- `index.html` — game interface, settings and development panels
 - `style.css` — visual design and responsive layout
-- `game.js` — isometric mine, movement, mining, resources, selling and local save
+- `game.js` — mine rendering, movement, mining, upgrades, construction and save system
 
-### Current prototype features
+### Implemented features
 
 - Isometric mine rendered on an HTML Canvas
 - WASD and arrow-key movement
@@ -22,9 +22,13 @@ The game is built with plain HTML, CSS and JavaScript. No build tools or install
 - Click nearby blocks to mine
 - Coal, copper and iron resources
 - Energy that gradually regenerates
-- Sell mined resources for money
+- Inventory capacity and sellable resources
+- Pickaxe upgrades that increase mining damage
+- Warehouse upgrades that expand inventory capacity
+- Build menu with a purchasable automatic drill
+- Automatic drill that mines a nearby block every 12 seconds
 - Mission progress display
-- Automatic save in the current browser
+- Persistent mine layout and resources in the current browser
 
 ### Run it
 
@@ -38,10 +42,10 @@ Open `index.html` in a modern browser, or enable GitHub Pages:
 
 ### Development roadmap
 
-1. Improve movement, mining feedback and world generation.
-2. Add inventory, tools, upgrades and building placement.
-3. Add elevators, workers and automated production.
-4. Add the campaign, regions, secrets and story progression.
+1. Improve the mining world, player animation and visual effects.
+2. Add more machines, production chains and workers.
+3. Add deeper mine levels and new mineral types.
+4. Build the campaign, regions, secrets and story progression.
 5. Add mobile touch controls, audio, accessibility and polish.
 
 ## Studio
