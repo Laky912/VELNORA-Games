@@ -76,25 +76,74 @@ for(let sum=0;sum<W+H-1;sum++)for(let y=0;y<H;y++){const x=sum-y;if(x<0||x>=W)co
 if(state.machines.drill){const p=iso(2,2);for(let i=0;i<state.machines.drill;i++){const ox=i*24;ctx.fillStyle="#26333b";ctx.fillRect(p.x-13+ox,p.y-27,25,27);ctx.fillStyle="#d5a34e";ctx.fillRect(p.x-8+ox,p.y-34,16,8);ctx.fillStyle="#8da0a9";ctx.fillRect(p.x-3+ox,p.y-45,6,12)}}
 if(state.machines.generator){const p=iso(11,2);ctx.fillStyle="#26333b";ctx.fillRect(p.x-12,p.y-25,24,25);ctx.fillStyle="#78c7a0";ctx.fillRect(p.x-7,p.y-34,14,10);ctx.fillStyle="#f5d47a";ctx.fillRect(p.x+11,p.y-20,4,4)}
 const p=iso(player.x,player.y);
-ctx.fillStyle="#07111699";ctx.beginPath();ctx.ellipse(p.x,p.y+5,15,7,0,0,Math.PI*2);ctx.fill();
-ctx.fillStyle="#263b46";poly([{x:p.x-10,y:p.y-20},{x:p.x-8,y:p.y-7},{x:p.x-5,y:p.y-3},{x:p.x+6,y:p.y-3},{x:p.x+10,y:p.y-8},{x:p.x+8,y:p.y-20}],"#355363","#172c35");
-ctx.fillStyle="#182a33";ctx.fillRect(p.x-7,p.y-7,5,8);ctx.fillRect(p.x+2,p.y-7,5,8);
-ctx.fillStyle="#b9794f";ctx.beginPath();ctx.arc(p.x,p.y-27,7,0,Math.PI*2);ctx.fill();
-ctx.fillStyle="#e3ad4d";ctx.beginPath();ctx.ellipse(p.x,p.y-33,11,6,0,Math.PI,Math.PI*2);ctx.fill();ctx.fillRect(p.x-10,p.y-34,20,4);
-ctx.fillStyle="#f8d47c";ctx.fillRect(p.x+4,p.y-35,5,2);
-ctx.fillStyle="#8a5c35";ctx.fillRect(p.x-9,p.y-20,5,9);ctx.fillRect(p.x+5,p.y-20,5,9);
-ctx.strokeStyle="#d7e0dc";ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(p.x+7,p.y-17);ctx.lineTo(p.x+15,p.y-32);ctx.stroke();
-ctx.strokeStyle="#8c633a";ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(p.x+12,p.y-32);ctx.lineTo(p.x+21,p.y-28);ctx.stroke();
-ctx.strokeStyle="#d8e0df";ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(p.x+15,p.y-32);ctx.lineTo(p.x+22,p.y-38);ctx.stroke();
-ctx.fillStyle="#fff4cf";ctx.font="bold 9px monospace";ctx.textAlign="center";ctx.fillText("MINERO",p.x,p.y-48);ctx.textAlign="left";
+drawMiner(p);
 ctx.fillStyle="#fff0c0cc";ctx.font="9px monospace";ctx.fillText("VELNORA MINING CO.",13,20)}
+function drawMiner(p){
+const moving=walking,phase=moving?Math.sin(Date.now()/72):0,bob=moving?Math.abs(phase)*2:Math.sin(Date.now()/650)*.6;
+const fx=facing==="left"?-1:facing==="right"?1:1,lean=facing==="up"?-1:facing==="down"?1:0;
+ctx.save();ctx.translate(p.x,p.y+bob);
+ctx.fillStyle="#07111699";ctx.beginPath();ctx.ellipse(0,5,15,7,0,0,Math.PI*2);ctx.fill();
+// boots and animated legs
+ctx.save();ctx.translate(0,-5);
+const stride=moving?phase*3:0;
+ctx.fillStyle="#26333a";ctx.fillRect(-7+stride,-1,6,9);ctx.fillRect(2-stride,-1,6,9);
+ctx.fillStyle="#9b7046";ctx.fillRect(-9+stride,6,8,4);ctx.fillRect(1-stride,6,8,4);
+ctx.restore();
+// durable work trousers and jacket
+poly([{x:-9,y:-20},{x:9,y:-20},{x:8,y:-7},{x:6,y:1},{x:-6,y:1},{x:-8,y:-7}],"#344c58","#182b34");
+poly([{x:-9,y:-19},{x:0,y:-16},{x:0,y:-3},{x:-7,y:-4}],"#496674");
+ctx.fillStyle="#d5a64f";ctx.fillRect(-7,-16,14,3);ctx.fillStyle="#d7e0dc";ctx.fillRect(-2,-15,4,4);
+ctx.fillStyle="#b9794f";ctx.beginPath();ctx.arc(0,-27,7.5,0,Math.PI*2);ctx.fill();
+ctx.fillStyle="#5b3928";ctx.fillRect(-7,-29,14,5);
+ctx.fillStyle="#e0ad4e";ctx.beginPath();ctx.ellipse(0,-33,11,6,Math.PI,Math.PI*2);ctx.fill();ctx.fillRect(-11,-34,22,4);
+ctx.fillStyle="#263943";ctx.fillRect(-8,-33,16,3);ctx.fillStyle="#f9dc91";ctx.fillRect(4,-35,5,3);
+ctx.shadowColor="#ffd878";ctx.shadowBlur=9;ctx.fillStyle="#fff0ae";ctx.beginPath();ctx.arc(7,-34,2,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;
+// arms, gloves and pickaxe follow facing direction
+const armSwing=moving?phase*2:Math.sin(Date.now()/500)*.6;
+ctx.strokeStyle="#b9794f";ctx.lineWidth=5;ctx.lineCap="round";
+ctx.beginPath();ctx.moveTo(-7,-17);ctx.lineTo(-11-armSwing,-8);ctx.stroke();
+ctx.fillStyle="#55402f";ctx.beginPath();ctx.arc(-11-armSwing,-8,3,0,Math.PI*2);ctx.fill();
+ctx.strokeStyle="#b9794f";ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(7,-17);ctx.lineTo(11+armSwing,-10);ctx.stroke();
+ctx.strokeStyle="#805a36";ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(10+armSwing,-10);ctx.lineTo(18+fx*2,-25);ctx.stroke();
+ctx.strokeStyle="#d8e1e2";ctx.lineWidth=3.5;ctx.beginPath();ctx.moveTo(13+fx*2,-26);ctx.lineTo(24+fx*2,-30);ctx.stroke();
+ctx.beginPath();ctx.moveTo(13+fx*2,-26);ctx.lineTo(8+fx*2,-21);ctx.stroke();
+ctx.fillStyle="#fff4cf";ctx.font="bold 9px monospace";ctx.textAlign="center";ctx.fillText("MINERO",0,-48);ctx.textAlign="left";
+ctx.restore();
+}
 function resize(){const r=canvas.getBoundingClientRect(),dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.max(1,Math.round(r.width*dpr));canvas.height=Math.max(1,Math.round(r.height*dpr));ctx.setTransform(dpr,0,0,dpr,0,0);tileW=Math.min(48,Math.max(27,r.width/(W+3)));tileH=tileW*.5;originX=r.width/2;originY=Math.max(100,r.height*.19);draw()}
-function move(dx,dy){const nx=Math.max(1,Math.min(W-2,player.x+dx)),ny=Math.max(1,Math.min(H-2,player.y+dy));if(nx===player.x&&ny===player.y)return;player.x=nx;player.y=ny;draw();save()}
-function mine(x,y,auto=false){const t=tileAt(x,y);if(!t||t.removed)return;if(!auto&&Math.abs(x-player.x)+Math.abs(y-player.y)>2){notify("Acércate al bloque para excavar.");return}if(state.energy<1&&!auto){notify("Sin energía. Espera o instala un generador.");return}if(total()>=state.capacity){notify("Almacén lleno. Vende recursos o amplíalo.");return}t.hp-=auto?1:state.pickaxe;if(!auto)state.energy=Math.max(0,state.energy-3);if(t.hp<=0){t.removed=true;if(t.type!=="stone"){state[t.type]++;state.lifetime[t.type]++;notify("+"+1+" "+t.type.toUpperCase())}else{state.coal++;state.lifetime.coal++;notify("+1 CARBÓN")}state.mined++;addXP(t.type==="gold"?12:t.type==="crystal"?18:5);if(t.core){state.coreFound=true;notify("¡Has encontrado el núcleo original!")}checkMission();checkAchievements()}else if(!auto)notify("Piedra dañada · "+Math.max(0,t.hp)+" resistencia");updateHud();save();draw()}
+function move(dx,dy){if(autoWalking)return;const nx=Math.max(1,Math.min(W-2,player.x+dx)),ny=Math.max(1,Math.min(H-2,player.y+dy));if(nx===player.x&&ny===player.y)return;const target=tileAt(nx,ny);if(!target||target.type==="wall"){notify("Ese túnel está bloqueado.");return}facing=dx<0?"left":dx>0?"right":dy<0?"up":"down";player.x=nx;player.y=ny;walking=true;draw();save();clearTimeout(walkStopTimer);walkStopTimer=setTimeout(()=>{walking=false;draw()},170)}
+function mine(x,y,auto=false){const t=tileAt(x,y);if(!t||t.removed)return;if(!auto&&Math.abs(x-player.x)+Math.abs(y-player.y)>1){notify("Acércate al bloque para excavar.");return}if(state.energy<1&&!auto){notify("Sin energía. Espera o instala un generador.");return}if(total()>=state.capacity){notify("Almacén lleno. Vende recursos o amplíalo.");return}t.hp-=auto?1:state.pickaxe;if(!auto)state.energy=Math.max(0,state.energy-3);if(t.hp<=0){t.removed=true;if(t.type!=="stone"){state[t.type]++;state.lifetime[t.type]++;notify("+"+1+" "+t.type.toUpperCase())}else{state.coal++;state.lifetime.coal++;notify("+1 CARBÓN")}state.mined++;addXP(t.type==="gold"?12:t.type==="crystal"?18:5);if(t.core){state.coreFound=true;notify("¡Has encontrado el núcleo original!")}checkMission();checkAchievements()}else if(!auto)notify("Piedra dañada · "+Math.max(0,t.hp)+" resistencia");updateHud();save();draw()}
 function canvasPos(e){const r=canvas.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}
 function pickTile(pos){let best=null,d0=Infinity;for(const t of tiles){if(t.removed)continue;const p=iso(t.x,t.y),d=Math.abs(pos.x-p.x)/(tileW/2)+Math.abs(pos.y-p.y)/(tileH/2);if(d<1&&d<d0){best=t;d0=d}}return best}
-canvas.addEventListener("pointerdown",e=>{const t=pickTile(canvasPos(e));if(t){selected={x:t.x,y:t.y};mine(t.x,t.y)}else{selected=null;draw()}});
-function moveByAction(a){const d={up:[0,-1],down:[0,1],left:[-1,0],right:[1,0]}[a];if(d)move(...d)}
+canvas.addEventListener("pointerdown",e=>{const t=pickTile(canvasPos(e));if(t){selected={x:t.x,y:t.y};approachAndMine(t)}else{selected=null;draw()}});
+let autoWalking=false,walking=false,facing="down",walkStopTimer=null;
+function approachAndMine(target){
+if(autoWalking)return;
+const tx=target.x,ty=target.y;
+if(Math.abs(tx-player.x)+Math.abs(ty-player.y)<=1){mine(tx,ty);return}
+const queue=[[player.x,player.y]],parents=new Map(),seen=new Set([player.x+","+player.y]);
+let goal=null;
+for(let qi=0;qi<queue.length&&!goal;qi++){
+const [x,y]=queue[qi];
+if(Math.abs(tx-x)+Math.abs(ty-y)<=1){goal=[x,y];break}
+for(const [dx,dy] of [[-1,0],[1,0],[0,-1],[0,1]]){
+const nx=x+dx,ny=y+dy,key=nx+","+ny;
+if(nx<1||ny<1||nx>W-2||ny>H-2||seen.has(key))continue;
+const cell=tileAt(nx,ny);if(!cell||cell.type==="wall")continue;
+seen.add(key);parents.set(key,[x,y]);queue.push([nx,ny]);
+}
+}
+if(!goal){notify("No hay un camino libre hasta ese mineral.");return}
+const path=[];let cur=goal;
+while(cur[0]!==player.x||cur[1]!==player.y){path.unshift(cur);cur=parents.get(cur[0]+","+cur[1]);if(!cur)break}
+autoWalking=true;
+const step=()=>{if(!path.length){autoWalking=false;walking=false;save();draw();mine(tx,ty);return}
+const [nx,ny]=path.shift(),dx=nx-player.x,dy=ny-player.y;
+facing=Math.abs(dx)>Math.abs(dy)?(dx<0?"left":"right"):(dy<0?"up":"down");
+player.x=nx;player.y=ny;walking=true;draw();save();setTimeout(step,125)};
+step();
+}
+function moveByAction(a){const d={up:[-1,-1],down:[1,1],left:[-1,1],right:[1,-1]}[a];if(d)move(...d)}
 function actionFor(k){if(k==="arrowup")return"up";if(k==="arrowdown")return"down";if(k==="arrowleft")return"left";if(k==="arrowright")return"right";return Object.keys(keys).find(a=>keys[a]===k)}
 window.addEventListener("keydown",e=>{if(binding){if(e.key.length===1||e.key.startsWith("Arrow")){keys[binding]=e.key.toLowerCase();binding=null;document.querySelectorAll(".key-bind").forEach(b=>b.classList.remove("listening"));renderKeys();save()}return}const k=e.key.toLowerCase();if(["arrowup","arrowdown","arrowleft","arrowright"," "].includes(k))e.preventDefault();if(["i"].includes(k)){openModule("inventory");return}if(k==="e"){interact();return}if(k==="escape"){if($("moduleDialog").open)$("moduleDialog").close();else if($("settings").open)$("settings").close();return}const a=actionFor(k);if(a)moveByAction(a)});
 document.querySelectorAll("[data-move]").forEach(b=>{const run=()=>moveByAction(b.dataset.move);b.addEventListener("pointerdown",e=>{e.preventDefault();run()})});
