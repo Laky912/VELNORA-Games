@@ -72,11 +72,18 @@ function draw(){const r=canvas.getBoundingClientRect();ctx.clearRect(0,0,r.width
 for(let sum=0;sum<W+H-1;sum++)for(let y=0;y<H;y++){const x=sum-y;if(x<0||x>=W)continue;const t=tileAt(x,y),p=iso(x,y);if(t.removed||t.type==="empty"||t.type==="wall")continue;ctx.save();ctx.translate(p.x,p.y+((x+y)%2)*2);if(t.type==="stone"){drawRock(p,t.type,.68)}else{drawRock(p,t.type,.86);if(t.type==="gold"||t.type==="crystal"){ctx.globalAlpha=.25;ctx.fillStyle=t.type==="gold"?"#ffe18a":"#8ffaff";ctx.beginPath();ctx.ellipse(0,0,17,8,0,0,Math.PI*2);ctx.fill()}}ctx.restore();if(selected&&selected.x===x&&selected.y===y){ctx.strokeStyle="#fff0b4";ctx.lineWidth=2;diamond(p.x,p.y,"#ffffff10","#ffe09a")}}
 if(state.machines.drill){const p=iso(2,2);for(let i=0;i<state.machines.drill;i++){const ox=i*24;ctx.fillStyle="#26333b";ctx.fillRect(p.x-13+ox,p.y-27,25,27);ctx.fillStyle="#d5a34e";ctx.fillRect(p.x-8+ox,p.y-34,16,8);ctx.fillStyle="#8da0a9";ctx.fillRect(p.x-3+ox,p.y-45,6,12)}}
 if(state.machines.generator){const p=iso(11,2);ctx.fillStyle="#26333b";ctx.fillRect(p.x-12,p.y-25,24,25);ctx.fillStyle="#78c7a0";ctx.fillRect(p.x-7,p.y-34,14,10);ctx.fillStyle="#f5d47a";ctx.fillRect(p.x+11,p.y-20,4,4)}
-const p=iso(player.x,player.y);ctx.fillStyle="#101b25aa";ctx.beginPath();ctx.ellipse(p.x,p.y+5,13,6,0,0,Math.PI*2);ctx.fill();
-ctx.fillStyle="#253b4a";poly([{x:p.x-9,y:p.y-20},{x:p.x-7,y:p.y-5},{x:p.x+7,y:p.y-5},{x:p.x+9,y:p.y-20}],"#29495b","#172d39");
-ctx.fillStyle="#d99b65";ctx.beginPath();ctx.arc(p.x,p.y-28,7,0,Math.PI*2);ctx.fill();ctx.fillStyle="#e5b94f";ctx.beginPath();ctx.ellipse(p.x,p.y-34,10,5,0,Math.PI,Math.PI*2);ctx.fill();ctx.fillRect(p.x-9,p.y-34,18,3);
-ctx.strokeStyle="#c9d4d9";ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(p.x+6,p.y-16);ctx.lineTo(p.x+14,p.y-31);ctx.stroke();ctx.strokeStyle="#d9a84f";ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(p.x+9,p.y-32);ctx.lineTo(p.x+19,p.y-29);ctx.stroke();
-ctx.fillStyle="#fff4cf";ctx.font="bold 9px monospace";ctx.textAlign="center";ctx.fillText("MINERO",p.x,p.y-47);ctx.textAlign="left";
+const p=iso(player.x,player.y);
+ctx.fillStyle="#07111699";ctx.beginPath();ctx.ellipse(p.x,p.y+5,15,7,0,0,Math.PI*2);ctx.fill();
+ctx.fillStyle="#263b46";poly([{x:p.x-10,y:p.y-20},{x:p.x-8,y:p.y-7},{x:p.x-5,y:p.y-3},{x:p.x+6,y:p.y-3},{x:p.x+10,y:p.y-8},{x:p.x+8,y:p.y-20}],"#355363","#172c35");
+ctx.fillStyle="#182a33";ctx.fillRect(p.x-7,p.y-7,5,8);ctx.fillRect(p.x+2,p.y-7,5,8);
+ctx.fillStyle="#b9794f";ctx.beginPath();ctx.arc(p.x,p.y-27,7,0,Math.PI*2);ctx.fill();
+ctx.fillStyle="#e3ad4d";ctx.beginPath();ctx.ellipse(p.x,p.y-33,11,6,0,Math.PI,Math.PI*2);ctx.fill();ctx.fillRect(p.x-10,p.y-34,20,4);
+ctx.fillStyle="#f8d47c";ctx.fillRect(p.x+4,p.y-35,5,2);
+ctx.fillStyle="#8a5c35";ctx.fillRect(p.x-9,p.y-20,5,9);ctx.fillRect(p.x+5,p.y-20,5,9);
+ctx.strokeStyle="#d7e0dc";ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(p.x+7,p.y-17);ctx.lineTo(p.x+15,p.y-32);ctx.stroke();
+ctx.strokeStyle="#8c633a";ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(p.x+12,p.y-32);ctx.lineTo(p.x+21,p.y-28);ctx.stroke();
+ctx.strokeStyle="#d8e0df";ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(p.x+15,p.y-32);ctx.lineTo(p.x+22,p.y-38);ctx.stroke();
+ctx.fillStyle="#fff4cf";ctx.font="bold 9px monospace";ctx.textAlign="center";ctx.fillText("MINERO",p.x,p.y-48);ctx.textAlign="left";
 ctx.fillStyle="#fff0c0cc";ctx.font="9px monospace";ctx.fillText("VELNORA MINING CO.",13,20)}
 function resize(){const r=canvas.getBoundingClientRect(),dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.max(1,Math.round(r.width*dpr));canvas.height=Math.max(1,Math.round(r.height*dpr));ctx.setTransform(dpr,0,0,dpr,0,0);tileW=Math.min(48,Math.max(27,r.width/(W+3)));tileH=tileW*.5;originX=r.width/2;originY=Math.max(100,r.height*.19);draw()}
 function move(dx,dy){const nx=Math.max(1,Math.min(W-2,player.x+dx)),ny=Math.max(1,Math.min(H-2,player.y+dy));if(nx===player.x&&ny===player.y)return;player.x=nx;player.y=ny;draw();save()}
