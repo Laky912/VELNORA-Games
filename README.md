@@ -8,6 +8,8 @@ MINING EMPIRE es un juego de minería, exploración y gestión empresarial para 
 
 ## Sistemas incluidos
 
+- Segunda pasada visual: vetas minerales con siluetas más naturales, minero con equipo y pico mejor definidos, iluminación ambiental y tonos de atmósfera distintos según la región.
+
 - Escenario ilustrado isométrico de la Mina abandonada, con plataformas de madera, túneles, raíles, vagoneta, elevador, vetas y cristales; depósitos interactivos de carbón, cobre, hierro, oro y cristal.
 - Movimiento con WASD o flechas, controles reasignables y botones táctiles en pantallas pequeñas.
 - Minería manual, resistencia de los bloques, energía y experiencia del operario.
