@@ -1,66 +1,40 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101923">
-  <meta name="description" content="MINING EMPIRE — un juego de minería y construcción de VELNORA Studios.">
-  <title>MINING EMPIRE | VELNORA Studios</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101923"><meta name="description" content="MINING EMPIRE: construye un imperio desde las profundidades. VELNORA Studios.">
+<title>MINING EMPIRE | VELNORA Studios</title><link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="game-shell">
-    <header class="topbar">
-      <a class="brand" href="#" aria-label="VELNORA Studios"><span class="brand-mark">V</span><span>VELNORA <small>STUDIOS</small></span></a>
-      <div class="game-name"><span class="live-dot"></span> MINING EMPIRE <small>EARLY DEVELOPMENT</small></div>
-      <button id="settingsBtn" class="icon-btn" aria-label="Configuración">⚙</button>
-    </header>
-    <section class="hud">
-      <div class="resource"><span class="resource-icon coin">¢</span><div><small>DINERO</small><strong id="money">250</strong></div></div>
-      <div class="resource"><span class="resource-icon coal">◆</span><div><small>CARBÓN</small><strong id="coal">0</strong></div></div>
-      <div class="resource"><span class="resource-icon copper">◆</span><div><small>COBRE</small><strong id="copper">0</strong></div></div>
-      <div class="resource"><span class="resource-icon iron">◆</span><div><small>HIERRO</small><strong id="iron">0</strong></div></div>
-      <div class="depth"><small>PROFUNDIDAD</small><strong id="depth">NIVEL 01</strong></div>
-    </section>
-    <section class="game-layout">
-      <aside class="side-panel">
-        <div class="panel-heading"><span>OPERACIONES</span><span class="panel-dot"></span></div>
-        <button class="nav-item active" data-tab="mine"><span>⛏</span> Mina</button>
-        <button class="nav-item" data-tab="upgrades"><span>⬆</span> Mejoras</button>
-        <button class="nav-item" data-tab="build"><span>▦</span> Construcción</button>
-        <div class="mission-card"><small>OBJETIVO ACTUAL</small><strong>Primeros recursos</strong><p>Extrae 5 bloques de mineral para comenzar tu imperio.</p><div class="progress"><i id="missionProgress"></i></div><small id="missionCount">0 / 5 BLOQUES</small></div>
-        <div class="side-footer">UNA PRODUCCIÓN DE<br><b>VELNORA STUDIOS</b></div>
-      </aside>
-      <div class="viewport">
-        <div class="viewport-label"><span>SECTOR 01 / MINA ABANDONADA</span><span class="status">● SISTEMA ACTIVO</span></div>
-        <canvas id="game" aria-label="Mina isométrica interactiva"></canvas>
-        <div class="canvas-hint" id="hint">MUEVE: WASD / FLECHAS <i>•</i> EXCAVA: CLIC EN UN BLOQUE</div>
-        <div class="toast" id="toast" role="status"></div>
-      </div>
-      <aside class="right-panel">
-        <div class="panel-heading">INFORMACIÓN</div>
-        <div class="worker-card"><div class="worker-avatar">⛑</div><div><strong>Tu minero</strong><small>OPERARIO PRINCIPAL</small></div><span class="online">●</span></div>
-        <div class="stat-line"><span>Energía</span><b id="energyText">100 / 100</b></div><div class="energy-bar"><i id="energyBar"></i></div>
-        <div class="panel-section"><div class="panel-heading">INVENTARIO</div><div class="inventory-row"><span>Carbón</span><b id="invCoal">0</b></div><div class="inventory-row"><span>Cobre</span><b id="invCopper">0</b></div><div class="inventory-row"><span>Hierro</span><b id="invIron">0</b></div></div>
-        <button id="sellBtn" class="primary-btn">VENDER RECURSOS <span>↗</span></button>
-        <p class="sell-note">Convierte los minerales extraídos en capital para expandir la mina.</p>
-      </aside>
-    </section>
-    <footer class="bottom-bar"><span>MINING EMPIRE <b>v0.1.0</b></span><span>PROTOTIPO JUGABLE · TU PROGRESO SE GUARDA EN ESTE NAVEGADOR</span><span>© VELNORA STUDIOS</span></footer>
-  </main>
-  <dialog id="settings">
-    <form method="dialog" class="settings-box">
-      <div class="settings-title"><div><small>PERSONALIZACIÓN</small><h2>Controles</h2></div><button class="icon-btn" aria-label="Cerrar">✕</button></div>
-      <p>Elige las teclas que prefieras para moverte por la mina.</p>
-      <div class="key-row"><label for="keyUp">Mover arriba</label><button type="button" class="key-bind" data-action="up" id="keyUp">W</button></div>
-      <div class="key-row"><label for="keyDown">Mover abajo</label><button type="button" class="key-bind" data-action="down" id="keyDown">S</button></div>
-      <div class="key-row"><label for="keyLeft">Mover izquierda</label><button type="button" class="key-bind" data-action="left" id="keyLeft">A</button></div>
-      <div class="key-row"><label for="keyRight">Mover derecha</label><button type="button" class="key-bind" data-action="right" id="keyRight">D</button></div>
-      <p class="settings-help">Selecciona una acción y presiona la nueva tecla. También puedes usar las flechas.</p>
-      <button type="button" id="resetKeys" class="secondary-btn">Restaurar controles predeterminados</button>
-    </form>
-  </dialog>
-  <dialog id="moduleDialog"><div class="module-box"><div class="settings-title"><div><small>DESARROLLO DE LA MINA</small><h2 id="moduleTitle">Mejoras</h2></div><button id="closeModule" class="icon-btn" aria-label="Cerrar">✕</button></div><p id="moduleDescription" class="module-description"></p><div id="moduleOptions" class="module-options"></div></div></dialog>
-  <script src="game.js"></script>
-</body>
-</html>
+<main class="game-shell">
+<header class="topbar"><a class="brand" href="#" aria-label="VELNORA Studios"><span class="brand-mark">V</span><span>VELNORA <small>STUDIOS</small></span></a><div class="game-name"><span class="live-dot"></span> MINING EMPIRE <small>EDICIÓN DE LANZAMIENTO</small></div><div class="top-actions"><button id="saveBtn" class="icon-btn" title="Guardar">↧</button><button id="settingsBtn" class="icon-btn" title="Configuración">⚙</button></div></header>
+<section class="hud">
+<div class="resource"><span class="resource-icon coin">¢</span><div><small>CAPITAL</small><strong id="money">250</strong></div></div>
+<div class="resource"><span class="resource-icon coal">◆</span><div><small>CARBÓN</small><strong id="coal">0</strong></div></div>
+<div class="resource"><span class="resource-icon copper">◆</span><div><small>COBRE</small><strong id="copper">0</strong></div></div>
+<div class="resource"><span class="resource-icon iron">◆</span><div><small>HIERRO</small><strong id="iron">0</strong></div></div>
+<div class="resource rare"><span class="resource-icon gold">◆</span><div><small>ORO</small><strong id="gold">0</strong></div></div>
+<div class="resource rare"><span class="resource-icon crystal">✦</span><div><small>CRISTAL</small><strong id="crystal">0</strong></div></div>
+<div class="depth"><small>PROFUNDIDAD</small><strong id="depth">NIVEL 01</strong></div>
+</section>
+<section class="game-layout">
+<aside class="side-panel"><div class="panel-heading">CENTRO DE OPERACIONES <span class="panel-dot"></span></div>
+<button class="nav-item active" data-tab="mine"><span>⛏</span> Mina</button><button class="nav-item" data-tab="upgrades"><span>⬆</span> Mejoras</button><button class="nav-item" data-tab="build"><span>▦</span> Fábrica</button><button class="nav-item" data-tab="regions"><span>◈</span> Expediciones</button>
+<div class="mission-card"><small>CAMPAÑA PRINCIPAL</small><strong id="missionTitle">Un nuevo comienzo</strong><p id="missionText">Extrae tus primeros minerales y demuestra que la mina aún tiene futuro.</p><div class="progress"><i id="missionProgress"></i></div><small id="missionCount">0 / 5</small></div>
+<div class="side-footer">UNA PRODUCCIÓN DE<br><b>VELNORA STUDIOS</b></div></aside>
+<div class="viewport"><div class="viewport-label"><span id="sectorName">SECTOR 01 / MINA ABANDONADA</span><span class="status">● SISTEMA ACTIVO</span></div><canvas id="game" aria-label="Mina isométrica interactiva"></canvas>
+<div class="canvas-hint" id="hint">MOVER: WASD / FLECHAS · EXCAVAR: CLIC · INTERACTUAR: E</div><div class="toast" id="toast" role="status"></div>
+<div class="touch-controls" aria-label="Controles táctiles"><button data-move="up">▲</button><div><button data-move="left">◀</button><button data-move="down">▼</button><button data-move="right">▶</button></div></div>
+</div>
+<aside class="right-panel"><div class="panel-heading">ESTADO DEL OPERARIO</div><div class="worker-card"><div class="worker-avatar">⛑</div><div><strong>Minero principal</strong><small id="workerRank">NOVATO · NIVEL 1</small></div><span class="online">●</span></div>
+<div class="stat-line"><span>Energía</span><b id="energyText">100 / 100</b></div><div class="energy-bar"><i id="energyBar"></i></div>
+<div class="stat-line"><span>Experiencia</span><b id="xpText">0 / 100 XP</b></div><div class="energy-bar xp-bar"><i id="xpBar"></i></div>
+<div class="panel-section"><div class="panel-heading">ALMACÉN <span id="capacityText">0 / 30</span></div><div class="inventory-row"><span>Carbón</span><b id="invCoal">0</b></div><div class="inventory-row"><span>Cobre</span><b id="invCopper">0</b></div><div class="inventory-row"><span>Hierro</span><b id="invIron">0</b></div><div class="inventory-row"><span>Oro</span><b id="invGold">0</b></div><div class="inventory-row"><span>Cristal</span><b id="invCrystal">0</b></div></div>
+<button id="sellBtn" class="primary-btn">VENDER INVENTARIO <span>↗</span></button><p class="sell-note">Los precios mejoran con tu nivel de empresa.</p>
+<div class="quick-stats"><span>Máquinas <b id="machineCount">0</b></span><span>Logros <b id="achievementCount">0/8</b></span></div></aside>
+</section>
+<footer class="bottom-bar"><span>MINING EMPIRE <b>v1.0.0</b></span><span>CAMPAÑA · AUTOMATIZACIÓN · EXPLORACIÓN</span><span>© VELNORA STUDIOS</span></footer>
+</main>
+<dialog id="settings"><form method="dialog" class="settings-box"><div class="settings-title"><div><small>PERSONALIZACIÓN</small><h2>Configuración</h2></div><button class="icon-btn" aria-label="Cerrar">✕</button></div><p>Personaliza los controles y administra tu partida.</p><div class="key-row"><label>Mover arriba</label><button type="button" class="key-bind" data-action="up" id="keyUp">W</button></div><div class="key-row"><label>Mover abajo</label><button type="button" class="key-bind" data-action="down" id="keyDown">S</button></div><div class="key-row"><label>Mover izquierda</label><button type="button" class="key-bind" data-action="left" id="keyLeft">A</button></div><div class="key-row"><label>Mover derecha</label><button type="button" class="key-bind" data-action="right" id="keyRight">D</button></div><p class="settings-help">Las flechas también funcionan siempre. Presiona una tecla para reasignar.</p><button type="button" id="resetKeys" class="secondary-btn">Restaurar controles</button><button type="button" id="resetSave" class="danger-btn">Reiniciar partida (borra el progreso)</button></form></dialog>
+<dialog id="moduleDialog"><div class="module-box"><div class="settings-title"><div><small id="moduleEyebrow">GESTIÓN DE EMPRESA</small><h2 id="moduleTitle">Mejoras</h2></div><button id="closeModule" class="icon-btn" aria-label="Cerrar">✕</button></div><p id="moduleDescription" class="module-description"></p><div id="moduleOptions" class="module-options"></div></div></dialog>
+<script src="game.js"></script></body></html>
