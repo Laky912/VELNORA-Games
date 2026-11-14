@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+<defs>
+ <linearGradient id="rock" x2="0" y2="1"><stop stop-color="#d7bd7d"/><stop offset=".48" stop-color="#9b794b"/><stop offset="1" stop-color="#59432f"/></linearGradient>
+ <linearGradient id="deep" x2="0" y2="1"><stop stop-color="#51402f"/><stop offset="1" stop-color="#211e1b"/></linearGradient>
+ <linearGradient id="wood" x2="0" y2="1"><stop stop-color="#a66b36"/><stop offset="1" stop-color="#4a2b18"/></linearGradient>
+ <linearGradient id="gold" x2="0" y2="1"><stop stop-color="#fff09a"/><stop offset=".5" stop-color="#e8a82f"/><stop offset="1" stop-color="#98531b"/></linearGradient>
+ <linearGradient id="crystal" x2="0" y2="1"><stop stop-color="#b5ffff"/><stop offset=".5" stop-color="#24aebc"/><stop offset="1" stop-color="#12546a"/></linearGradient>
+ <radialGradient id="sun"><stop stop-color="#fff1a3" stop-opacity=".9"/><stop offset="1" stop-color="#ffca54" stop-opacity="0"/></radialGradient>
+ <pattern id="grain" width="72" height="48" patternUnits="userSpaceOnUse"><path d="M4 13l18-7 17 9-8 5-23 1zm39 23l12-8 15 4-5 8z" fill="#f0d59a" opacity=".13"/><path d="M2 42l19-4m29-29l14-4" stroke="#2b211a" opacity=".16" stroke-width="3"/></pattern>
+ <filter id="shadow"><feGaussianBlur stdDeviation="12"/></filter>
+</defs>
+<rect width="1200" height="800" fill="#18252a"/>
+<!-- distant cavern -->
+<path d="M0 0h1200v250l-90 70-80-22-100 55-95-38-110 62-105-37-90 48-100-34-110 22L0 300z" fill="url(#deep)"/>
+<path d="M0 0h1200v210l-95 45-75-35-115 54-85-40-105 60-110-40-100 45-100-34-105 25L0 285z" fill="url(#rock)"/>
+<path d="M0 0h1200v210l-95 45-75-35-115 54-85-40-105 60-110-40-100 45-100-34-105 25L0 285z" fill="url(#grain)"/>
+<!-- layered ledges -->
+<path d="M0 135l160 22 100-42 100 34 95-47 115 45 105-34 110 36 100-51 110 42 105-27v74l-120 42-90-35-110 40-110-33-110 44-110-39-100 39-110-33-130 35-100-26z" fill="#b99a60" stroke="#6c5436" stroke-width="8"/>
+<path d="M0 205l150 19 105-26 112 28 100-27 114 28 112-30 104 25 112-31 100 25 91-20v70l-110 38-100-30-112 39-105-32-111 40-105-31-110 40-112-32-115 31-130-31z" fill="#8e7047" stroke="#59452f" stroke-width="7"/>
+<!-- far mining platforms -->
+<path d="M0 320l1200-72v170L0 505z" fill="#60452e" opacity=".5"/>
+<path d="M250 0l28 0 55 290-28 4zM920 0h24l-18 280-24 4z" fill="#473524" opacity=".8"/>
+<!-- warm shaft light -->
+<ellipse cx="660" cy="310" rx="390" ry="330" fill="url(#sun)"/>
+<!-- rear mine tracks -->
+<path d="M380 0l125 180 190 90 125 0 145-100 235-35" fill="none" stroke="#3b3327" stroke-width="28"/>
+<path d="M380 0l125 180 190 90 125 0 145-100 235-35" fill="none" stroke="#b4a078" stroke-width="17"/>
+<path d="M380 0l125 180 190 90 125 0 145-100 235-35" fill="none" stroke="#58666a" stroke-width="7"/>
+<path d="M360 0l125 180 190 90 125 0 145-100 235-35" fill="none" stroke="#292a27" stroke-width="8" stroke-dasharray="4 18"/>
+<!-- right rock wall -->
+<path d="M1000 0h200v800h-220l-42-115 65-120-34-110 52-120-35-110z" fill="#5b4934" stroke="#2d2923" stroke-width="12"/>
+<path d="M1060 0h140v800h-150l-35-110 55-115-35-100 45-110-30-115z" fill="url(#rock)" opacity=".7"/>
+<path d="M0 0h120v800H0z" fill="#30271f"/>
+<path d="M0 0h70l35 130-24 150 34 130-28 130 32 150-20 110H0z" fill="#80603d" opacity=".65"/>
+<!-- main cavern floor -->
+<path d="M0 440l175 75 125-22 160 65 155-34 150 50 160-52 140 18 135-55v320H0z" fill="#6d4b2c"/>
+<path d="M0 485l175 75 125-22 160 65 155-34 150 50 160-52 140 18 135-55v270H0z" fill="#9a6b37"/>
+<path d="M0 485l175 75 125-22 160 65 155-34 150 50 160-52 140 18 135-55v270H0z" fill="url(#grain)"/>
+<!-- lower gold-lit river / ore field -->
+<path d="M380 470l150-70 145 35 110-35 160 55 100 100-85 110-210 60-210-45-180-90z" fill="#bb853b" opacity=".65"/>
+<path d="M430 545l125-85 125 30 105-40 125 55 85 100-130 65-200-28-160-55z" fill="#e4a83f" opacity=".55"/>
+<!-- wooden working deck -->
+<path d="M0 470l275 45 225 105 70 180H0z" fill="#39271c"/>
+<path d="M0 450l275 45 225 105 70 200H0z" fill="url(#wood)" stroke="#2b1d16" stroke-width="12"/>
+<g stroke="#3b2415" stroke-width="8" opacity=".9">
+<path d="M-10 490l300 50M-10 545l350 56M-10 605l410 65M-10 670l460 70M-10 735l490 55"/>
+<path d="M70 465l-5 335M175 485l-10 315M285 510l-20 290M395 550l-25 250"/>
+</g>
+<g stroke="#d79b52" stroke-width="3" opacity=".35"><path d="M10 505l245 43m-210 70l320 52m-290 75l330 49"/></g>
+<!-- bridge supports -->
+<path d="M500 590l45 0-10 210h-24zM780 555l45 0-5 245h-28zM960 540l45 0-10 260h-30z" fill="#50321e"/>
+<path d="M500 620l-45 35m90-35l45 35M780 585l-50 45m95-45l55 45M960 570l-50 50m95-50l55 50" stroke="#b07b40" stroke-width="13"/>
+<!-- rails on elevated wooden bridge -->
+<path d="M270 475l210 65 185-12 155-75 170-10" fill="none" stroke="#382d25" stroke-width="24"/>
+<path d="M270 462l210 65 185-12 155-75 170-10" fill="none" stroke="#9da7a3" stroke-width="10"/>
+<path d="M270 484l210 65 185-12 155-75 170-10" fill="none" stroke="#657579" stroke-width="9"/>
+<path d="M290 450l-10 36m70-15l-10 37m75-17l-10 38m80-18l-10 38m85-17l-5 37m80-58l10 37m65-69l15 37m60-60l18 36m60-40l15 35" stroke="#c4b18b" stroke-width="7"/>
+<!-- mine cart -->
+<g transform="translate(720 548)"><ellipse cx="45" cy="48" rx="65" ry="15" fill="#251c17" opacity=".5"/><path d="M0 0h100l-14 55H18z" fill="#5c3c24" stroke="#281d15" stroke-width="8"/><path d="M8 4h84l-8 20H16z" fill="#b17b39"/><path d="M16 0l14-28 22 5 14 23" fill="#d79a39"/><circle cx="22" cy="59" r="13" fill="#252321" stroke="#b5a17c" stroke-width="5"/><circle cx="83" cy="59" r="13" fill="#252321" stroke="#b5a17c" stroke-width="5"/></g>
+<!-- timber mine entrance -->
+<g transform="translate(35 235)"><path d="M0 180V45Q0 0 55 0h110q55 0 55 55v125z" fill="#211d19" stroke="#50351f" stroke-width="18"/><path d="M18 180V55Q18 20 58 20h103q40 0 40 38v122" fill="none" stroke="#a36c36" stroke-width="15"/><path d="M10 38l200 0M10 82l200 0M10 126l200 0" stroke="#56371f" stroke-width="13"/><path d="M80 0v180m65-180v180" stroke="#754a27" stroke-width="10"/><path d="M70 40h70v92H70z" fill="#7c2520" stroke="#d0a24c" stroke-width="5"/><path d="M105 55l-18 38h15l-6 23 26-38h-17l8-23z" fill="#e7c36b"/></g>
+<!-- lift crane and ropes -->
+<g stroke="#443222"><path d="M950 0v510M1010 0v465M1080 0v510" stroke-width="9"/><path d="M920 95h165M940 85l-20 40m165-40l20 40" stroke="#b38a4d" stroke-width="13"/></g>
+<g transform="translate(940 460)"><path d="M0 0h95l-8 66H12z" fill="#a55c24" stroke="#4c2d1c" stroke-width="8"/><path d="M12 4h70" stroke="#e0a54e" stroke-width="7"/><path d="M20 65l-12 22m70-22l12 22" stroke="#3c2b20" stroke-width="8"/></g>
+<!-- ore piles and gold -->
+<g fill="url(#gold)" stroke="#9c6122" stroke-width="3">
+<path d="M190 750l25-55 24 12 22-42 24 47 28 5 22 45z"/><path d="M620 765l35-85 34 14 27-52 30 48 39-6 40 81z"/><path d="M1010 770l28-72 35 9 24-38 31 54 30 4 28 43z"/><path d="M285 420l20-31 19 9 16-25 22 33 22 2 15 20z"/>
+</g>
+<g fill="#f5d76a"><circle cx="215" cy="705" r="8"/><circle cx="260" cy="724" r="10"/><circle cx="690" cy="695" r="9"/><circle cx="745" cy="720" r="8"/><circle cx="1070" cy="725" r="10"/><circle cx="1120" cy="744" r="7"/><circle cx="335" cy="410" r="7"/></g>
+<!-- blue crystal outcrops -->
+<g fill="url(#crystal)" stroke="#174d5b" stroke-width="8">
+<path d="M0 800V650l35-85 25 45 22-115 36 100 20 205z"/><path d="M1060 800V620l35-115 35 52 25-120 40 95v268z"/><path d="M920 800l-10-100 30-70 25 42 18-90 35 78 5 140z"/>
+</g>
+<g fill="#b8ffff" opacity=".45"><path d="M35 565l25 45-7 125-18-100zM1125 505l35 95-18 90-15-100zM965 630l20 55-12 65z"/></g>
+<!-- ladders and pipes -->
+<g stroke="#6e4c2b" stroke-width="9"><path d="M300 90l-20 260m80-270l-20 270"/><path d="M285 130l65 5m-69 48l65 5m-72 48l65 5m-72 48l65 5"/></g>
+<path d="M820 0v235q0 35 35 35h110" fill="none" stroke="#4b6466" stroke-width="14"/><path d="M830 0v235q0 25 25 25h110" fill="none" stroke="#a4b6a6" stroke-width="5"/>
+<!-- hanging lanterns -->
+<g><path d="M160 0v125m-8 0h16" stroke="#30251a" stroke-width="5"/><path d="M145 125h30l-5 35h-20z" fill="#d89b43" stroke="#56391e" stroke-width="4"/><circle cx="160" cy="140" r="8" fill="#fff0a4"/><circle cx="160" cy="140" r="45" fill="url(#sun)" opacity=".45"/></g>
+<g><path d="M570 0v190" stroke="#30251a" stroke-width="5"/><path d="M555 190h30l-5 35h-20z" fill="#d89b43" stroke="#56391e" stroke-width="4"/><circle cx="570" cy="205" r="8" fill="#fff0a4"/></g>
+<!-- atmospheric foreground -->
+<path d="M0 790q150-65 280 0t280 0 280 0 360 0v10H0z" fill="#1b211e" opacity=".5"/>
+<rect width="1200" height="800" fill="#e9ba65" opacity=".045"/>
+</svg>
