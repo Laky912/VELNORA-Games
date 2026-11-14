@@ -68,6 +68,9 @@ else if(type!=="stone"){ctx.strokeStyle=type==="gold"?"#fff0b0":type==="copper"?
 ctx.restore();
 }
 function draw(){const r=canvas.getBoundingClientRect();ctx.clearRect(0,0,r.width,r.height);if(mineScene.complete&&mineScene.naturalWidth){ctx.drawImage(mineScene,0,0,r.width,r.height)}else{const bg=ctx.createLinearGradient(0,0,0,r.height);bg.addColorStop(0,"#8a7048");bg.addColorStop(1,"#293b3e");ctx.fillStyle=bg;ctx.fillRect(0,0,r.width,r.height)}
+const regionAtmosphere=["#b77a3a","#536b83","#2a9ca5","#d75b36","#72b8e4","#8871c7"];
+ctx.save();ctx.globalAlpha=.13;ctx.fillStyle=regionAtmosphere[state.region]||regionAtmosphere[0];ctx.fillRect(0,0,r.width,r.height);ctx.restore();
+const ambient=ctx.createRadialGradient(r.width*.5,r.height*.42,20,r.width*.5,r.height*.42,r.width*.68);ambient.addColorStop(0,"#fff0c0");ambient.addColorStop(1,"#00000000");ctx.fillStyle=ambient;ctx.fillRect(0,0,r.width,r.height);
 // Ore deposits are placed as natural outcrops over the illustrated cave floor, not as a solid block grid.
 for(let sum=0;sum<W+H-1;sum++)for(let y=0;y<H;y++){const x=sum-y;if(x<0||x>=W)continue;const t=tileAt(x,y),p=iso(x,y);if(t.removed||t.type==="empty"||t.type==="wall")continue;ctx.save();ctx.translate(p.x,p.y+((x+y)%2)*2);if(t.type==="stone"){drawRock(p,t.type,.68)}else{drawRock(p,t.type,.86);if(t.type==="gold"||t.type==="crystal"){ctx.globalAlpha=.25;ctx.fillStyle=t.type==="gold"?"#ffe18a":"#8ffaff";ctx.beginPath();ctx.ellipse(0,0,17,8,0,0,Math.PI*2);ctx.fill()}}ctx.restore();if(selected&&selected.x===x&&selected.y===y){ctx.strokeStyle="#fff0b4";ctx.lineWidth=2;diamond(p.x,p.y,"#ffffff10","#ffe09a")}}
 if(state.machines.drill){const p=iso(2,2);for(let i=0;i<state.machines.drill;i++){const ox=i*24;ctx.fillStyle="#26333b";ctx.fillRect(p.x-13+ox,p.y-27,25,27);ctx.fillStyle="#d5a34e";ctx.fillRect(p.x-8+ox,p.y-34,16,8);ctx.fillStyle="#8da0a9";ctx.fillRect(p.x-3+ox,p.y-45,6,12)}}
