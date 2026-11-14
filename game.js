@@ -40,7 +40,7 @@ $("capacityText").textContent=total()+" / "+state.capacity;$("depth").textConten
 $("workerRank").textContent=(state.level<3?"NOVATO":state.level<6?"EXPERTO":"MAESTRO")+" · NIVEL "+state.level;
 $("machineCount").textContent=Object.values(state.machines).reduce((a,b)=>a+b,0);$("achievementCount").textContent=state.achievements.length+"/8";
 const m=MISSIONS[Math.min(state.mission,MISSIONS.length-1)];$("missionTitle").textContent=m.title;$("missionText").textContent=m.text;$("missionCount").textContent=m.progress(state);$("missionProgress").style.width=(m.goal(state)?100:Math.min(95,missionRatio()))+"%";
-$("hint").textContent="MOVER: WASD / FLECHAS · EXCAVAR: CLIC · INTERACTUAR: E · ALMACÉN "+total()+"/"+state.capacity;
+$("hint").textContent="MOVER: WASD / FLECHAS · CLIC EN MINERAL: ACERCARSE Y EXCAVAR · E: EXPEDICIONES · ALMACÉN "+total()+"/"+state.capacity;
 }
 function missionRatio(){const s=state;if(s.mission===0)return Math.min(100,s.mined/5*100);if(s.mission===1)return Math.min(100,s.sold);if(s.mission===2)return Math.min(100,s.pickaxe/2*100);if(s.mission===3)return s.region?100:0;if(s.mission===4)return s.machines.drill?100:0;if(s.mission===5)return Math.min(100,s.lifetime.gold*10);if(s.mission===6)return Math.min(100,s.lifetime.crystal*10);return s.coreFound?100:0}
 function checkMission(){while(state.mission<MISSIONS.length&&MISSIONS[state.mission].goal(state)){const m=MISSIONS[state.mission];state.money+=m.reward;state.mission++;notify("Objetivo completado: +¢"+m.reward);if(state.mission>=MISSIONS.length){notify("¡Campaña principal completada! Tu imperio ya tiene historia.")} }}
